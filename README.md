@@ -1,6 +1,7 @@
-- Završni Selenium projekat -
+- Final Selenium project -
 
-TESTIRANJE SOFTVERA PRIMENOM SELENIUM OKVIRA
+TESTING OF SOFTWARE USING SELENIUM FRAMEWORK
 
-Na primeru aplikacije https://vue-demo.daniel-avellaneda.com/ demonstrirati proces testiranja softvera primenom Selenium i TestNG biblioteka, sa dostupnom kompletnom implementacijom na github nalogu.
+Demonstration of testing process using Selenium and TestNG on the following app:
+https://vue-demo.daniel-avellaneda.com/
 

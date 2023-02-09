@@ -1,4 +1,4 @@
-- Final Selenium project -
+- Final project -
 
 TESTING OF SOFTWARE USING SELENIUM FRAMEWORK
 

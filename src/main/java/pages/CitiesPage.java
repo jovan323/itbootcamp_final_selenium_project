@@ -41,4 +41,7 @@ public class CitiesPage extends BasePage{
     public WebElement getEditButtonFromRow (int row) {
         return driver.findElement(By.xpath("//tbody/tr["+row+"]//button[@id='edit']"));
     }
+    public WebElement getDeleteButtonFromRow (int row) {
+        return driver.findElement(By.xpath("//tbody/tr["+row+"]//button[@id='edit']"));
+    }
 }

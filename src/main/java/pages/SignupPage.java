@@ -9,7 +9,7 @@ public class SignupPage extends BasePage{
     public SignupPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
-    public WebElement getSignUpBox(){
+    public WebElement getNameBox(){
         return driver.findElement(By.name("name"));
     }
     public WebElement getEmailBox(){
@@ -22,6 +22,6 @@ public class SignupPage extends BasePage{
         return driver.findElement(By.name("confirmPassword"));
     }
     public WebElement getSignUpButton(){
-        return driver.findElement(By.linkText("Sign me up"));
+        return driver.findElement(By.xpath("//*[text()='Sign me up']"));
     }
 }

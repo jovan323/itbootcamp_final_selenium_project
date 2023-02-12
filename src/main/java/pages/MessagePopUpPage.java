@@ -11,27 +11,30 @@ public class MessagePopUpPage extends BasePage{
         super(driver, wait);
     }
     public void waitForPopUp(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@role='status']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'success')]")));
     }
-    //Elemente koji u sebi sadrze tekstove poruke
-    public void getElementsWithTextMess(){
+    public void waitForMessagePopUp(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@role='status']//li")));
     }
-
+    public WebElement getElementsWithTextMessage(){
+        return driver.findElement
+                (By.xpath("//*[@role='status']//li"));
+    }
+    public WebElement getEditCreateCityMessage(){
+        return driver.findElement
+                (By.xpath("//*[@class='v-snack__wrapper v-sheet theme--dark success']/div"));
+    }
     public WebElement getCloseButton(){
         return driver.findElement(By.linkText("Close"));
     }
 
-    //metodu koja ceka da se verify your account dijalog pojavi
-    public void waitForAccDialog(){
+    public void waitVerifyAccDialog(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='v-card v-sheet theme--light']")));
     }
-    // metodu koja vraca zaglavlje iz verify your account dijaloga
-    // koji sadrzi tekst IMPORTANT: Verify your account
     public WebElement getHeaderFromAccDialog(){
-        return driver.findElement(By.linkText(""));
+        return driver.findElement(By.xpath("//*[contains(@class, 'v-card__title')]"));
     }
-
-    // Close dugme iz verify account dijaloga
     public WebElement getCloseButtonFromAccDialog() {
-        return driver.findElement(By.linkText(""));
+        return driver.findElement(By.xpath("//span[text()='Close']"));
     }
 }

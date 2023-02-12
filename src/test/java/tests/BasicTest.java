@@ -28,6 +28,7 @@ public abstract class BasicTest {
     protected MessagePopUpPage messagePopUpPage;
     protected NavPage navPage;
     protected SignupPage signupPage;
+    protected ProfilePage profilePage;
     protected String baseUrl = "https://vue-demo.daniel-avellaneda.com";
 
     @BeforeClass
@@ -36,6 +37,7 @@ public abstract class BasicTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         loginPage = new LoginPage(driver, wait);
         citiesPage = new CitiesPage(driver, wait);

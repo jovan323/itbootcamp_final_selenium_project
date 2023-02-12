@@ -11,16 +11,44 @@ public class NavPage extends BasePage{
     }
 
     public WebElement getHomeLink(){
-        return driver.findElement(By.linkText("Home"));
+        return driver.findElement(By.xpath("//span[text()=' Home ']"));
     }
     public WebElement getAboutLink(){
-        return driver.findElement(By.linkText("About"));
+        return driver.findElement(By.xpath("//span[text()=' About ']"));
+    }
+    public WebElement getLogInButton(){
+        return driver.findElement(By.xpath("//span[text()=' Login ']"));
+    }
+    public WebElement getSignUpButton(){
+        return driver.findElement(By.xpath("//span[text()=' Sign Up ']"));
     }
     public WebElement getMyProfileLink(){
-        return driver.findElement(By.linkText("My Profile"));
+        return driver.findElement(By.xpath("//span[text()=' My Profile ']"));
+    }
+    public WebElement getLanguageButton(){
+        return driver.findElement(By.xpath("//button[contains(@class, 'btnLocaleActivation ')]"));
+    }
+    public WebElement getEnButton(){
+        return driver.findElement(By.xpath("//*[@class='flag f-gb small-flag']"));
+    }
+    public WebElement getEsButton(){
+        return driver.findElement
+                (By.xpath("//*[@class='flag f-es small-flag']"));
+    }
+    public WebElement getFrButton(){
+        return driver.findElement
+                (By.xpath("//*[@class='flag f-fr small-flag']"));
+    }
+    public WebElement getCnButton(){
+        return driver.findElement
+                (By.xpath("//*[@class='flag f-cn small-flag']"));
+    }
+    public WebElement getUAButton(){
+        return driver.findElement
+                (By.xpath("//*[@class='flag f-ua small-flag']"));
     }
     public WebElement getAdminLink(){
-        return driver.findElement(By.linkText("Admin"));
+        return driver.findElement(By.xpath("//span[text()=' Admin ']"));
     }
     public WebElement getAdminCitiesLink(){
         return driver.findElement(By.linkText("Cities"));
@@ -28,31 +56,12 @@ public class NavPage extends BasePage{
     public WebElement getAdminUsersLink(){
         return driver.findElement(By.linkText("Users"));
     }
-    public WebElement getSignUpButton(){
-        return driver.findElement(By.linkText("Sign Up"));
-    }
-    public WebElement getLogInButton(){
-        return driver.findElement(By.linkText("Login"));
-    }
+
     public WebElement getLogOutButton(){
-        return driver.findElement(By.linkText("Logout"));
+        return driver.findElement
+                (By.xpath("//span[text()=' Logout ']"));
     }
-    public WebElement getLanguageButton(){
-        return driver.findElement(By.xpath("//button[contains(@class, 'btnLocaleActivation ')]"));
-    }
-    public WebElement getEnButton(){
-        return driver.findElement(By.linkText("EN"));
-    }
-    public WebElement getEsButton(){
-        return driver.findElement(By.linkText("ES"));
-    }
-    public WebElement getFrButton(){
-        return driver.findElement(By.linkText("FR"));
-    }
-    public WebElement getCnButton(){
-        return driver.findElement(By.linkText("Logout"));
-    }
-    public WebElement getUAButton(){
-        return driver.findElement(By.linkText("UA"));
+    public WebElement getHeaderForLocale(){
+        return driver.findElement(By.xpath("//h1"));
     }
 }

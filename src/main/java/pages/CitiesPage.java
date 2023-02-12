@@ -11,13 +11,18 @@ public class CitiesPage extends BasePage{
         super(driver, wait);
     }
     public WebElement getNewItemButton () {
-        return driver.findElement(By.linkText("New Item"));
+        return driver.findElement
+                (By.xpath("//span[contains(text(),' New Item ')]"));
     }
-    public WebElement getSearchBox () {
-        return driver.findElement(By.id("search"));
+    public WebElement getSearchCityBox() {
+        return driver.findElement(By.xpath("//input[@id='search']"));
+    }
+    public WebElement getInputCityBox(){
+        return driver.findElement(By.id("name"));
     }
     public WebElement waitForEditDialog (){
-        return wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Edit Item")));
+        return wait.until(ExpectedConditions.presenceOfElementLocated
+                (By.xpath("//*[@class='v-card v-sheet theme--light']")));
     }
     public WebElement waitForDeleteDialog (){
         return wait.until
@@ -25,12 +30,21 @@ public class CitiesPage extends BasePage{
                         (By.xpath("//*[@class='v-toolbar__title white--text']")));
     }
     public WebElement getSaveButton (){
-        return driver.findElement(By.linkText("Save"));
+        return driver.findElement
+                (By.xpath("//span[contains(text(), 'Save')]"));
+    }
+    public void waitForEditCreateMessage(){
+        driver.findElement(By.xpath
+                ("//*[contains(@class,'success')]/div[@class='v-snack__content']"));
+    }
+    public void waitProgressBarInvisible() {
+        wait.until(ExpectedConditions.invisibilityOf(driver.findElement(
+                By.xpath("//div[@role='progressbar']"))));
     }
     public WebElement getDeleteButton (){
-        return driver.findElement(By.linkText("Delete"));
+        return driver.findElement(By.xpath("//span[text()=' Delete ']"));
     }
-    public void waitForNoOfRows (int row){
+    public void waitForNumberOfRows (int row){
         wait.until(ExpectedConditions.numberOfElementsToBe
                 (By.xpath("//tbody/tr"), row));
     }
@@ -42,6 +56,6 @@ public class CitiesPage extends BasePage{
         return driver.findElement(By.xpath("//tbody/tr["+row+"]//button[@id='edit']"));
     }
     public WebElement getDeleteButtonFromRow (int row) {
-        return driver.findElement(By.xpath("//tbody/tr["+row+"]//button[@id='edit']"));
+        return driver.findElement(By.xpath("//tbody/tr["+row+"]//button[@id='delete']"));
     }
 }

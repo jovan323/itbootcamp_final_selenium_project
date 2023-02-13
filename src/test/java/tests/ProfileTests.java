@@ -1,9 +1,8 @@
 package tests;
 
 import com.sun.org.glassfish.gmbal.Description;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -30,14 +29,61 @@ public class ProfileTests extends BasicTest {
         Thread.sleep(1000);
         navPage.getMyProfileLink().click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement inputEmailElement = driver.findElement(By.xpath("//input[@disabled='disabled']"));
-        String attrType = (String) js.executeScript("return arguments[0].getAttribute('type');", inputEmailElement);
-        String attrDisabled = (String) js.executeScript("return arguments[0].getAttribute('disabled');", inputEmailElement);
-        Assert.assertEquals(attrType,"email");
+        String attrDisabled = (String) js.executeScript("return arguments[0].getAttribute('disabled');", profilePage.getEmailBox());
+        Assert.assertEquals(profilePage.getEmailBox().getAttribute("type"),"email");
         Assert.assertEquals(attrDisabled, "disabled", "Value is not DISABLED");
-//        Assert.assertTrue(profilePage.getNameBox().getAttribute("type").equals("text"));
-//        profilePage.getNameBox().sendKeys("blablaba");
-
-        profilePage.getTwitterBox().clear();
+        Assert.assertTrue(profilePage.getNameBox().getAttribute("type").equals("text"));
+        Assert.assertTrue(profilePage.getCityBox().getAttribute("type").equals("text"));
+        Assert.assertTrue(profilePage.getCountryBox().getAttribute("type").equals("text"));
+        Assert.assertTrue(profilePage.getTwitterBox().getAttribute("type").equals("url"));
+        Assert.assertTrue(profilePage.getGithubBox().getAttribute("type").equals("url"));
+        Assert.assertTrue(profilePage.getPhoneBox().getAttribute("type").equals("tel"));
+        navPage.getLogOutButton().click();
+    }
+    @Test
+    @Description("Test #3: Edit profile with" +
+            "Credentials:" +
+            "email: admin@admin.com" +
+            "password: 12345" +
+            "name: ime i prezime polaznika" +
+            "phone: +38161283223" +
+            "city: Bucaramanga" +
+            "country: Spain" +
+            "twitter: https://twitter.com/profile/milan1232" +
+            "github: link do vaseg github-a")
+    public void editProfile() throws InterruptedException {
+        navPage.getLogInButton().click();
+        loginPage.getEmailBox().sendKeys("admin@admin.com");
+        loginPage.getPasswordBox().sendKeys("12345");
+        loginPage.getLoginButton().click();
+        Thread.sleep(1000);
+        navPage.getMyProfileLink().click();
+        profilePage.getNameBox().click();
+        profilePage.getNameBox().sendKeys((Keys.CONTROL + "a"));
+        profilePage.getNameBox().sendKeys("Uvwuvwuevwuevwue");
+        profilePage.getPhoneBox().click();
+        profilePage.getPhoneBox().sendKeys((Keys.CONTROL + "a"));
+        profilePage.getPhoneBox().sendKeys("+555-1234");
+        profilePage.getCityBox().click();
+        profilePage.getCityBox().sendKeys((Keys.CONTROL + "a"));
+        profilePage.getCityBox().sendKeys("New York");
+        profilePage.getCountryBox().click();
+        profilePage.getCountryBox().sendKeys((Keys.CONTROL + "a"));
+        profilePage.getCountryBox().sendKeys("New York");
+        profilePage.getTwitterBox().click();
+        profilePage.getTwitterBox().sendKeys((Keys.CONTROL + "a"));
+        profilePage.getTwitterBox().sendKeys("https://twitter.com/LosZao");
+        profilePage.getGithubBox().click();
+        profilePage.getGithubBox().sendKeys((Keys.CONTROL + "a"));
+        profilePage.getGithubBox().sendKeys("https://github.com/topics/javascript-executor");
+        profilePage.getSaveButton().click();
+        Thread.sleep(1000);
+        Assert.assertTrue
+                (messagePopUpPage.getMessage().isDisplayed(),
+                "Message doesn't appear");
+        Assert.assertTrue
+                (messagePopUpPage.getMessageText().getText()
+                        .contains("Profile saved successfuly"));
+        navPage.getLogOutButton().click();
     }
 }

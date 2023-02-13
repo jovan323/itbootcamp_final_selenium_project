@@ -1,7 +1,6 @@
 package tests;
 
 import com.sun.org.glassfish.gmbal.Description;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -47,7 +46,7 @@ public class SignupTests extends BasicTest{
         signupPage.getSignUpButton().click();
         messagePopUpPage.waitForMessagePopUp();
         Assert.assertTrue
-                (messagePopUpPage.getElementsWithTextMessage().
+                (messagePopUpPage.getMessageTextLog().
                         getText().equals("E-mail already exists"));
     }
     @Test(priority = 4)

@@ -11,10 +11,10 @@ public class ProfilePage extends BasePage{
         super(driver, wait);
     }
     public WebElement getEmailBox(){
-        return driver.findElement(By.xpath("//input[@disabled='disabled']"));
+        return driver.findElement(By.id("email"));
     }
     public WebElement getNameBox(){
-        return driver.findElement(By.xpath("//*[@id='name']"));
+        return driver.findElement(By.id("name"));
     }
     public WebElement getPhoneBox(){
         return driver.findElement(By.id("phone"));
@@ -33,17 +33,5 @@ public class ProfilePage extends BasePage{
     }
     public WebElement getSaveButton(){
         return driver.findElement(By.xpath("//button[@type='submit']"));
-    }
-    public WebElement getChangePasswordButton(){
-        return driver.findElement(By.xpath("//*[contains(@class,'btnChangePassword')]"));
-    }
-    public WebElement getClearFieldButton(){
-        return driver.findElement(By.xpath("//*[@aria-label='clear icon']"));
-    }
-    public void javaScriptExec(){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement inputEmailElement = driver.findElement(By.xpath("//*[contains(@class, 'v-input--is-disabled')]"));
-        String attrDisabled = (String) js.executeScript("return arguments[0].getAttribute('disabled');", inputEmailElement);
-        String attrValue = (String) js.executeScript("return arguments[0].getAttribute('value');", inputEmailElement);
     }
 }

@@ -44,6 +44,7 @@ public abstract class BasicTest {
         messagePopUpPage = new MessagePopUpPage(driver, wait);
         navPage = new NavPage(driver, wait);
         signupPage = new SignupPage(driver, wait);
+        profilePage = new ProfilePage(driver, wait);
     }
 
     @BeforeMethod

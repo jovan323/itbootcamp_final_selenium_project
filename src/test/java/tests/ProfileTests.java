@@ -18,6 +18,9 @@ public class ProfileTests extends BasicTest {
         Thread.sleep(1000);
         driver.get(baseUrl + "/profile");
         Assert.assertTrue(driver.getCurrentUrl().contains("/profile"));
+        Assert.assertEquals(profilePage.getEmailBox().getAttribute("value"),
+                "admin@admin.com", "Email not valid");
+        navPage.getLogOutButton().click();
     }
     @Test(priority = 2)
     @Description("Test #2: Checks input types")

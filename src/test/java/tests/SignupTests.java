@@ -28,12 +28,7 @@ public class SignupTests extends BasicTest{
                 "ConfirmPasswordBox attribute type doesn't contain PASSWORD");
     }
     @Test(priority = 3)
-    @Description("Test #3: Display errors when used already exists" +
-            "Credentials:" +
-            "name: Another User" +
-            "email: admin@admin.com" +
-            "password: 12345" +
-            "confirm password: 12345")
+    @Description("Test #3: Display errors when used already exists")
     public void errorExistingUsers(){
         navPage.getSignUpButton().click();
         Assert.assertTrue
@@ -47,15 +42,11 @@ public class SignupTests extends BasicTest{
         messagePopUpPage.waitForMessagePopUp();
         Assert.assertTrue
                 (messagePopUpPage.getMessageTextLog().
-                        getText().equals("E-mail already exists"));
+                        getText().equals("E-mail already exists"),
+                        "Wrong text displayed in popup");
     }
     @Test(priority = 4)
-    @Description("Test #4: Valid signup with:" +
-            "Credentials:" +
-            "name: First and last name" +
-            "email template: first.lastname@itbootcamp.rs" +
-            "password: 12345" +
-            "confirm password: 12345")
+    @Description("Test #4: Valid signup with credentials")
     public void validSignup() throws InterruptedException {
         navPage.getSignUpButton().click();
         signupPage.getNameBox().sendKeys("Joe Piscopo");
@@ -65,7 +56,8 @@ public class SignupTests extends BasicTest{
         signupPage.getSignUpButton().click();
         Thread.sleep(2000);
         Assert.assertTrue
-                (driver.getCurrentUrl().contains("/home"), "URL doesn't contain HOME");
+                (driver.getCurrentUrl().contains("/home"),
+                        "URL doesn't contain HOME");
         Assert.assertTrue
                 (messagePopUpPage.getHeaderFromAccDialog().getText().
                         contains("IMPORTANT: Verify your account"),

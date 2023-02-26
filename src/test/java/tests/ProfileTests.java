@@ -26,6 +26,9 @@ public class ProfileTests extends BasicTest {
         Assert.assertEquals
                 (profilePage.getEmailBox().getAttribute("value"), "admin@admin.com",
                         "Incorrect text for attribute VALUE");
+        Assert.assertTrue(driver.getCurrentUrl().contains("/profile"));
+        Assert.assertEquals(profilePage.getEmailBox().getAttribute("value"),
+                "admin@admin.com", "Email not valid");
         navPage.getLogOutButton().click();
     }
     @Test(priority = 2)
